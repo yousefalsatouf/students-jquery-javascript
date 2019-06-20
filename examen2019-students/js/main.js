@@ -68,7 +68,52 @@ $(function(){
                                             '<tbody></tbody>'+
                                             '</table>';
                                 $('#questions').append(table);
+                                for (let k in data.questions)
+                                {
+                                    $('#questions #'+data.title+' tbody').append(
+                                                                '<tr>'+
+                                                                '<td>'+data.questions[k]+'</td>'+
+                                                                '<td><input type="radio" id="ch1-'+k+'" name="material-'+k+'" value="vbad"></td>'+
+                                                                '<td><input type="radio" id="ch1-'+k+'" name="material-'+k+'" value="bad"></td>'+
+                                                                '<td><input type="radio" id="ch1-'+k+'" name="material-'+k+'" value="good"></td>'+
+                                                                '<td><input type="radio" id="ch1-'+k+'" name="material-'+k+'" value="vgood"></td>'+
+                                                                '<td><input type="radio" id="ch1-'+k+'" name="material-'+k+'" value="exellent"></td>'+
+                                                                '</tr>'
+                                                            );
+                                }
                                 
+                                $('.container').on('click', '#confirm', function(){
+                                    let a1 = $(':radio[name="material-2.1"]');
+                                    let a2 = $(':radio[name="material-2.2"]');
+                                    let a3 = $(':radio[name="material-2.3"]');
+                                    let a4 = $(':radio[name="material-2.4"]');
+                                    let a5 = $(':radio[name="material-2.5"]');
+
+                                    if(a1.prop("checked") === false)
+                                    {
+                                        $('#message').show();
+                                        a1.closest('tr').css('background-color', '#f99');
+                                    }if(a2.prop("checked") === false)
+                                    {
+                                        $('#message').show();
+                                        a2.closest('tr').css('background-color', '#f99');
+                                    }if(a3.prop("checked") === false)
+                                    {
+                                        $('#message').show();
+                                        a3.closest('tr').css('background-color', '#f99');
+                                    }if(a4.prop("checked") === false)
+                                    {
+                                        $('#message').show();
+                                        a4.closest('tr').css('background-color', '#f99');
+                                    }if(a5.prop("checked") === false)
+                                    {
+                                        $('#message').show();
+                                        a5.closest('tr').css('background-color', '#f99');
+                                    }if (a1.prop("checked") === true && a2.prop("checked") === true && a3.prop("checked") === true && a4.prop("checked") === true && a5.prop("checked") === true)
+                                    {
+                                        $("#next").attr("disabled", false);
+                                    }
+                                });
                             });
                         }
                         
